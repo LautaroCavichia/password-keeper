@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import "./LandingPage.css"
+
 
 interface LoginForm {
     userName?: string;
@@ -30,27 +33,30 @@ export const LandingPage = () => {
 
 
     return (
-        <div>
-        <h1>Welcome to the PASSWORD KEEPER</h1>
-        <div>
-            <p>{loginErrorState.userNameError || "Username:"}</p>
-            <input
-            id="userNameInput"
-            value={loginState.userName}
-            onChange={e=>setLoginState({...loginState,userName:e.target.value})}
-            />
-        </div>
-        <div>
-            <p>{loginErrorState.passwordError || "Password:"}</p>
-            <input
-            id="passwordInput"
-            value={loginState.password}
-            onChange={e=>setLoginState({...loginState,password:e.target.value})}
-            />
-        </div>
-        <div>
-            <button>Submit</button>
-        </div>
+        <div className="login">
+            <h1>Welcome!</h1>
+            <form>
+            <div>
+                <p>{loginErrorState.userNameError || "Username:"}</p>
+                <input
+                    id="userNameInput"
+                    type="text"
+                    value={loginState.userName}
+                    onChange={(e) => setLoginState({ ...loginState, userName: e.target.value })}
+                />
+            </div>
+            <div>
+                <p>{loginErrorState.passwordError || "Password:"}</p>
+                <input
+                    id="passwordInput"
+                    type="password"
+                    value={loginState.password}
+                    onChange={(e) => setLoginState({ ...loginState, password: e.target.value })}
+                />
+            </div>
+        </form>
+        
+        <Link className = "submit" to="/addPassword">LOGIN</Link>
         </div>
     );
     }
